@@ -1,3 +1,11 @@
+## Changes Made
+# First Pass  92/93 pagespeed
+-   replaced google webfont with css font family
+-   inline css and media query for print.css
+-   moved scripts to bottom and async google analytics
+-   optimize image sizes and image formats 
+
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
