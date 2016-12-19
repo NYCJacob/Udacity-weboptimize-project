@@ -3,7 +3,10 @@
 -   replaced google webfont with css font family
 -   inline css and media query for print.css
 -   moved scripts to bottom and async google analytics
--   optimize image sizes and image formats 
+-   optimize image sizes and image formats, moved href images to local dir
+
+# Second Pass  93/95 pagespeed
+- minify html, compress images, use strict in perfmatters.js
 
 
 ## Website Performance Optimization portfolio project
