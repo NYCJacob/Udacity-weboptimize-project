@@ -456,11 +456,11 @@ var resizePizzas = function(size) {
     function sizeSwitcher (size) {
         switch(size) {
             case "1":
-                return 25;
+                return "20";
             case "2":
-                return 33;
+                return "30";
             case "3":
-                return 50;
+                return "40";
             default:
                 console.log("bug in sizeSwitcher");
         }
@@ -477,6 +477,16 @@ var resizePizzas = function(size) {
       // var newwidth = (dynamicPizza.offsetWidth + dx) + 'px';
       dynamicPizza.style.width = (sizeSwitcher(size)) + '%';
     // }
+
+      // change pie size text
+      var sizeDescriptor = document.getElementById("sizeDescriptor");
+      sizeDescriptor.innerHTML = '';
+      if (size === "1") {
+        sizeDescriptor.innerHTML = "Feeds one lonely person.";
+      } else if (size === "2") {
+        sizeDescriptor.innerHTML = "Feeds two romantic people";
+      } else
+        sizeDescriptor.innerHTML = "Feeds 3-4 normal people or one drunk college student";
   };
 
   changePizzaSizes(size);

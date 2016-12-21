@@ -1,0 +1,98 @@
+/*
+this is for the flex navbased on flexbox.io
+*/
+
+
+a {
+    /*color:white;*/
+    color: #ff000b;;
+    /*font-weight: 100;*/
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    /*background:rgba(0,0,0,0.2);*/
+    background:rgba(255,174,0,0.7);
+    padding:20px 5px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    transition:all 0.5s;
+}
+
+a:hover {
+    /*background:rgba(0,0,0,0.3);*/
+    background:rgba(255,174,0,1);
+    color: #ff000b;
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Flex Box Starts Here! */
+
+
+/* Flex Container */
+.flex-nav ul {
+    border:1px solid black;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display:flex;
+}
+
+/* Flex Item */
+.flex-nav li {
+    flex:1;
+}
+
+.flex-nav .brand {
+    flex: 1.5;
+}
+
+.toggleNav {
+    display: none;
+}
+
+@media all and (max-width:768px) {
+
+    .flex-nav ul {
+        flex-wrap:wrap;
+    }
+
+    .flex-nav li {
+        flex:1 1 50%;
+    }
+
+    .flex-nav .brand {
+        flex:1 1 100%;
+    }
+
+}
+
+
+@media all and (max-width: 480px) {
+    .flex-nav li {
+        flex-basis: 100%;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toggleNav {
+        display: block;
+    }
+
+    .flex-nav ul {
+        display: none;
+    }
+
+    .flex-nav ul.open {
+        display: flex;
+        overflow: hidden;
+    }
+
+}
