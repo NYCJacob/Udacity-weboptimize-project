@@ -62,8 +62,8 @@ form {
 }
 
  .container-fluid {
-  /*background-color: rgba(240, 60, 60, 0.8);*/
-  background-color: rgba(240, 60, 60, 1);
+  background-color: rgba(255, 0, 0, 0.8);
+  /*background-color: rgba(240, 60, 60, 1);*/
    padding-top: 1vh;
    max-width: 960px;
    color: black;
