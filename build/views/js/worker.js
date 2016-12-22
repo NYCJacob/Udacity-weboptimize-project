@@ -3,13 +3,13 @@
  */
 
 // Moves the sliding background pizzas based on scroll position
- function updatePositions() {
+ function updatePositions(scrollPosition) {
     frame++;
     window.performance.mark("mark_start_frame");
 
     var items = document.getElementsByClassName('mover');
     for (var i = 0; i < items.length; i++) {
-        var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+        var phase = Math.sin((scrollPosition/ 1250) + (i % 5));
         // items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
         var startLeft = items[i].style.left;
         var startX = parseInt(startLeft.slice(0, -2));
@@ -24,12 +24,12 @@
         var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
         logAverageFrame(timesToUpdatePosition);
     }
+
+    worker.postMessage('worker done');
  }
 
- onmessage = function (e) {
+ this.onmessage = function (e) {
      console.log('message received from main.js');
-     if (e.data === 0) {
-         updatePositions();
-
-     }
+     var scrollPosition =  e.data;
+     updatePositions(scrollPosition)
  };

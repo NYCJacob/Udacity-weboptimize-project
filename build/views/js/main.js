@@ -563,7 +563,8 @@ function updatePositions() {
  */
 var worker = new Worker('js/worker.js');
 function startAnime() {
-    worker.postMessage(0)  // call worker
+  var scrollTop = document.body.scrollTop;
+    worker.postMessage(scrollTop);  // call worker
 }
 function stopAnime() {
     worker.terminate();
