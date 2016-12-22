@@ -504,6 +504,7 @@ var resizePizzas = function(size) {
 
 window.performance.mark("mark_start_generating"); // collect timing data
 
+//TODO: refactor this loop
 // This for-loop actually creates and appends all of the pizzas when the page loads
 for (var i = 2; i < 100; i++) {
   var pizzasDiv = document.getElementById("randomPizzas");
@@ -533,14 +534,12 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
-// Moves the sliding background pizzas based on scroll position
+/*// Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // var items = document.querySelectorAll('.mover');
   var items = document.getElementsByClassName('mover');
-
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     // items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
@@ -557,10 +556,24 @@ function updatePositions() {
     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
     logAverageFrame(timesToUpdatePosition);
   }
+}*/
+
+/*
+    web worker
+ */
+var worker = new Worker('js/worker.js');
+function startAnime() {
+    worker.postMessage(0)  // call worker
+}
+function stopAnime() {
+    worker.terminate();
 }
 
+worker.onmessage = stopAnime();
+
 // runs updatePositions on scroll
- window.addEventListener('scroll', updatePositions);
+//  window.addEventListener('scroll', updatePositions);
+ window.addEventListener('scroll', startAnime);
 
 // Generates the sliding pizzas when the page loads.
 // TODO: implement requestAnimationFrame
@@ -590,6 +603,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.willChange = 'tranform';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  updatePositions();
+  // updatePositions();
+  startAnime();
 });
 
