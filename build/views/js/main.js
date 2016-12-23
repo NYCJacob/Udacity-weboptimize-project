@@ -476,11 +476,14 @@ var resizePizzas = function(size) {
     // changed to use percentages with sizeSwitcher function
   function changePizzaSizes(size) {
     // for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dynamicPizza = document.getElementById("pizzaSizer");
-      // var dx = determineDx(dynamicPizza, size);
-      // var newwidth = (dynamicPizza.offsetWidth + dx) + 'px';
-      dynamicPizza.style.width = (sizeSwitcher(size)) + '%';
+    //   var dx = determineDx(dynamicPizza, size);
+    //   var newwidth = (dynamicPizza.offsetWidth + dx) + 'px';
     // }
+
+      var pizzaContainers = document.getElementsByClassName('randomPizzaContainer');
+      for (var c = 0; c < pizzaContainers.length; c++) {
+            pizzaContainers[c].style.width = sizeSwitcher(size) + '%';
+      }
 
       // change pie size text
       var sizeDescriptor = document.getElementById("sizeDescriptor");
