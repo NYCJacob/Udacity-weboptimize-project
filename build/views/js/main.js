@@ -15,7 +15,6 @@
  Cameron Pittman, Udacity Course Developer
  cameron *at* udacity *dot* com
  */
-
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
@@ -394,6 +393,7 @@ var pizzaElementGenerator = function (i) {
 
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function (size) {
+    "use strict";
     window.performance.mark("mark_start_resize");   // User Timing API function
 
     // Changes the value for the size of the pizza above the slider
@@ -436,20 +436,21 @@ var resizePizzas = function (size) {
     // Iterates through pizza elements on the page and changes their widths
     // changed to use percentages with sizeSwitcher function
     function changePizzaSizes(size) {
-        var pizzaContainers = document.getElementsByClassName('randomPizzaContainer');
+        var pizzaContainers = document.getElementsByClassName("randomPizzaContainer");
         for (var c = 0; c < pizzaContainers.length; c++) {
-            pizzaContainers[c].style.width = sizeSwitcher(size) + '%';
+            pizzaContainers[c].style.width = sizeSwitcher(size) + "%";
         }
 
         // change pie size text
         var sizeDescriptor = document.getElementById("sizeDescriptor");
-        sizeDescriptor.innerHTML = '';
+        sizeDescriptor.innerHTML = "";
         if (size === "1") {
             sizeDescriptor.innerHTML = "Feeds one lonely person.";
         } else if (size === "2") {
             sizeDescriptor.innerHTML = "Feeds two romantic people";
-        } else
+        } else {
             sizeDescriptor.innerHTML = "Feeds 3-4 normal people or one drunk college student";
+        }
     }
 
     changePizzaSizes(size);
@@ -494,11 +495,12 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
+    "use strict";
     frame++;
     window.performance.mark("mark_start_frame");
 
     // var items = document.querySelectorAll('.mover');
-    var items = document.getElementsByClassName('mover');
+    var items = document.getElementsByClassName("mover");
 
     // precalculate phase which dev tools identified as source of jank
 
@@ -511,13 +513,10 @@ function updatePositions() {
         (Math.sin(scrollVector + 4) * 100)];
 
     for (var i = 0; i < items.length; i++) {
-        // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
         var phase = phaseArray[i % 5];
-        // items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
         var startLeft = items[i].style.left;
         var startX = parseInt(startLeft.slice(0, -2));
-        // items[i].style.transform = 'translateX(' + (startX + 100 * phase) + 'px)';
-        items[i].style.transform = 'translateX(' + (startX + phase) + 'px)';
+        items[i].style.transform = "translateX(" + (startX + phase) + "px)";
     }
 
     // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -531,10 +530,10 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+window.addEventListener("scroll", updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
     // basicLeft commented out
     /*  var cols = 8;
      var s = 256;
@@ -559,16 +558,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var pizzaCount = realColumns * realRow;
 
     for (var i = 0; i < pizzaCount; i++) {
-        var elem = document.createElement('img');
-        elem.className = 'mover';
+        var elem = document.createElement("img");
+        elem.className = "mover";
         elem.src = "img/pizza.png";
         elem.style.height = "100px";
         elem.style.width = "73.333px";
         // basicLeft is just 8 multiples of 256
         // elem.basicLeft = (i % cols) * s;
-        elem.style.left = (i % realColumns) * s + 'px';
-        elem.style.top = (Math.floor(i / cols) * s) + 'px';
-        elem.style.willChange = 'tranform';
+        elem.style.left = (i % realColumns) * s + "px";
+        elem.style.top = (Math.floor(i / cols) * s) + "px";
+        elem.style.willChange = "tranform";
         document.querySelector("#movingPizzas1").appendChild(elem);
 
     }
@@ -576,6 +575,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 <!--this toggle the mobile hamburger menu using flexbox-->
-var menuToggle = document.getElementsByClassName('toggleNav');
+var menuToggle = document.getElementById("toggleNav");
 menuToggle.addEventListener("click", function () {
-    $('.flex-nav ul').toggleClass('open')});
+    $(".flex-nav ul").toggleClass("open")});

@@ -16,7 +16,7 @@
 <div class="wrapper">
 
     <nav class="flex-nav">
-        <a href="#" class="toggleNav">☰ Menu</a>
+        <a href="#" id="toggleNav" class="toggleNav">☰ Menu</a>
         <ul>
             <li class="brand">
                 <a href="#">Cam's Pizzeria <span class="sr-only">(current)</span> </a>
@@ -189,15 +189,6 @@
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/main.js"></script>
-
-<!--this toggle the mobile hamburger menu using flexbox-->
-<script>
-    $(function () {
-        $('.toggleNav').on('click', function () {
-            $('.flex-nav ul').toggleClass('open');
-        });
-    });
-</script>
 
 </body>
 
