@@ -21,7 +21,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('minHTML', function() {
-    return gulp.src('./build/*.html')
+    return gulp.src('./build/**/*.html')
         .pipe(plugins.htmlmin({collapseWhitespace: true, minifyCSS: true, removeComments: true}))
         .pipe(gulp.dest('./dist'));
 });
