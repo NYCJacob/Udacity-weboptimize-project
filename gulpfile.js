@@ -24,7 +24,7 @@ gulp.task('minHTML', function() {
     return gulp.src('./build/**/*.html')
         .pipe(plugins.replace(/\perfmatters.js/g, "perfmatters.min.js"))
         .pipe(plugins.replace(/\main.js/g, "main.min.js"))
-        // .pipe(plugins.htmlmin({collapseWhitespace: true, minifyCSS: true, removeComments: true}))
+        .pipe(plugins.htmlmin({collapseWhitespace: true, minifyCSS: true, removeComments: true}))
         .pipe(gulp.dest('./dist'));
 });
 
@@ -35,13 +35,19 @@ gulp.task('csslint', function () {
 });
 
 
+gulp.task('concatCss', function () {
+    return gulp.src('./build/views/css/*.min.css')
+        .pipe(plugins.concatCss('./build/views/css/bundled.min.css'))
+        .pipe(gulp.dest('.'));
+});
+
 
 gulp.task('styles', function() {
-    return gulp.src('./build/views/css*.css', {base: 'build'} )
-        .pipe(plugins.concatCss())
+    return gulp.src('./build/views/css/*.css' )
+        // .pipe(plugins.concatCss('./build/views/css/bundled.css'))
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(plugins.cssnano())
-        .pipe(gulp.dest('./dist/'))
+        .pipe(gulp.dest('./build/views/css/'))
         .pipe(plugins.notify({ message: 'Styles task complete' }));
 });
 
@@ -60,6 +66,15 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('./dist/js'))
         .pipe(plugins.notify({ message: 'Scripts task complete' }));
 });
+
+gulp.task('oneScript', function () {
+    return gulp.src('./build/views/js/main.js')
+        .pipe(plugins.rename({suffix: '.min'}))
+        .pipe(plugins.uglify())
+        .pipe(gulp.dest('./build/views/js'))
+        .pipe(plugins.notify({ message: 'oneScript task complete' }));
+});
+
 
 // gulp-imagemin:   Minify PNG, JPEG, GIF and SVG images
 

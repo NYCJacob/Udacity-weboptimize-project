@@ -1,0 +1,22 @@
+{
+  "name": "frontend-nanodegree-mobile-portfolio",
+  "description": "Udacity Web Optimization Project",
+  "main": "index.js",
+  "authors": [
+    "jsherman <jacob@jbsherman.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Udacity",
+    "Webop",
+    "project"
+  ],
+  "homepage": "https://github.com/NYCJacob/frontend-nanodegree-mobile-portfolio",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
