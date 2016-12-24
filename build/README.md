@@ -1,5 +1,6 @@
 # Udacity Website Optimization Project by Jacob Sherman
 This is a submission for Udacity's Front End Developer NanoDegree.
+
 The goal of the project is to obtain pagespeed scores above 90 on ./index.html
 and meet the specs for page refresh 60fps on ./views/pizza.html
 
@@ -12,7 +13,8 @@ and meet the specs for page refresh 60fps on ./views/pizza.html
 
 ##  ./views/pizza.html 60fps
 - refactored html using proper Bootstrap syntax and used Bootstrap 4alpha
-- redesigned layout and color scheme including flexbox based navbar at top
+- redesigned layout and color scheme including flexbox based responsive (hamburger menu) navbar at top
+    +   flexbox menu comes from [Wes Boz flexbox site](http://www.flexbox.io)
 - slider also changes text for pizza size text
 - moving pizzas have css: will-change and transform properties
 - updatePositions now does phase calculations outside of loop
@@ -24,4 +26,8 @@ and meet the specs for page refresh 60fps on ./views/pizza.html
 
 ## other
 -   experimented with moving updatePositions to a webworker but this did not seem to work because of limitations of web worker scope.
--   considered using requestAnimationFrame but was already hitting 60fps
+-   tried using requestAnimationFrame but caused a lot more jank
+
+## github
+- comments and contributions welcome
+- [Rep on github here](https://github.com/NYCJacob/Udacity-weboptimize-project)
