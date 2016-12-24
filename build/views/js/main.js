@@ -527,6 +527,8 @@ function updatePositions() {
         var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
         logAverageFrame(timesToUpdatePosition);
     }
+
+    window.requestAnimationFrame(updatePositions);
 }
 
 // runs updatePositions on scroll
@@ -571,7 +573,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#movingPizzas1").appendChild(elem);
 
     }
-    updatePositions();
+    window.requestAnimationFrame(updatePositions);
 });
 
 <!--this toggle the mobile hamburger menu using flexbox-->
