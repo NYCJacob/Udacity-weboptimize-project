@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-flex.min.css">-->
+    <!--<link rel="stylesheet" href="css/style.min.css">-->
+    <!--<link rel="stylesheet" href="css/flex-styles.min.css">-->
+    <!---->
+    <link rel="stylesheet" href="css/bundled.min.css">
+</head>
+
+<body>
+
+<!--bootstrap navbar didn't format easily this is a flexbox nav following Wes Bos flexbox.io-->
+<div class="wrapper">
+
+    <nav class="flex-nav">
+        <a href="#" id="toggleNav" class="toggleNav">☰ Menu</a>
+        <ul>
+            <li class="brand">
+                <a href="#">Cam's Pizzeria <span class="sr-only">(current)</span> </a>
+            </li>
+
+            <li class="">
+                <a class="" href="#">Menu</a>
+            </li>
+            <li class="">
+                <a class="" href="#">Ingredients</a>
+            </li>
+            <li class="">
+                <a class="" href="#">Locations</a>
+            </li>
+            <li class="">
+                <a class="" href="#">Contact Us</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>
+
+<div id="movingPizzas1">
+
+    <div class="container-fluid">
+
+        <div id="callToAction" class="row">
+            <div class="col-xs-4 ">
+                <img src="img/pizzeria-600px-tall.jpg" class="img-fluid" alt="Pizzeria Display" sizes="33vw"
+                     srcset="img/pizzeria-100px.jpg 100w, img/pizzeria-300px.jpg 300w,
+                img/pizzeria-600px-tall.jpg 600w, img/pizzeria-900px-tall.jpg 900w,
+                img/pizzeria-1200px-tall.jpg 1200w">
+            </div>
+            <div class="col-xs-8">
+                <h2>We Have Hundreds of Pizza Recipes!</h2>
+                <p>At Cam's Pizzeria, we know you want options. Pepperoni? Boring. Cheese? No way! Sausage? C'mon, let's
+                    get creative.</p>
+                <p>We have every pizza ingredient imaginable in our kitchen because we know you take choice seriously.
+                    Take a look through
+                    our menu of hundreds of pizza options and we know that you'll find something you love.</p>
+
+                <form action="#randomPizzas">
+                    <button type="submit" value="Pick a Pizza Now!" class="btn btn-primary" id="submit">Pick a Pizza Now
+                        Dude!
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!--end of row-->
+
+        <div id="ingredients" class="row">
+            <div class="col-xs-12 col-md-4">
+                <h2>It Starts with the Ingredients!</h2>
+                <p>We've scoured the planet for the best pizza ingredients. Our crack team of ingredient specialists are
+                    on constant
+                    lookout for new and interesting pizza ingredients.</p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <h2>Give People Options!</h2>
+                <p>We have classic meats like pepperoni, sausage, and barbecue chicken. But you can find even more fun
+                    meats like coppa,
+                    kielbasa and soylent green on our menu too.</p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <h2>Make Everyone Happy!</h2>
+                <p>Not interested in meat? No problem! We love our veggies too :) We have everything from arugula to
+                    zucchini.</p>
+            </div>
+        </div>
+        <!--end of row-->
+
+        <div id="locations" class="row text-sm-center">
+            <div class="col-xs-12 text-sm-center">
+                <h2>Locations! We're we you hang.</h2>
+            </div>
+        </div>
+        <!--end of row-->
+
+        <div class="row">
+            <div class="col-md-6 text-md-center">
+                <h3>Pizza Road</h3>
+                <p>1800 Pizza Road<br>San Francisco, CA<br>01010<br>555-555-5555</p>
+            </div>
+            <div class="col-md-6 text-md-center">
+                <h3>Classic Pie Way</h3>
+                <p>999 Classic Pie Way<br>New York, NY<br>00100<br>555-555-5555</p>
+            </div>
+        </div>
+        <!--end of row-->
+
+        <div id="pizzaGenerator" class="">
+            <div class="row text-sm-center">
+                <div class="col-sm-12">
+                    <h4><u>What size pizza would you like? Use the slider below to change pizza sizes.</u></h4>
+                </div>
+            </div>
+            <!--end of row-->
+
+            <div class="row">
+                <div class="col-sm-6 ">
+                    <div class="row">
+                        <label for="sizeSlider" id="pizzaSize" class="col-sm-12 text-sm-center">Medium</label>
+                    </div>
+                    <div class="row align-middle">
+                        <div class="col-sm-12 text-sm-center">
+                            <input id="sizeSlider" type="range" min="1" max="3" value="2" step="1"
+                                   onchange="resizePizzas(this.value)"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <p id="sizeDescriptor"><strong>Feeds two romantic people.</strong></p>
+                </div>
+            </div>
+            <!--end slider row-->
+
+            <section id="pizza-options">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 style="text-align: center">Our Pizzas!</h2>
+                    </div>
+                </div>
+                <!--end of row-->
+
+                <div id="randomPizzas" class="row">
+                    <div id="pizza0" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
+                        <div style="width:35%">
+                            <img src="img/pizza.png" class="img-fluid">
+                        </div>
+                        <div style="width:65%">
+                            <h4>The Udacity Special</h4>
+                            <ul>
+                                <li>Turkey</li>
+                                <li>Tofu</li>
+                                <li>Cauliflower</li>
+                                <li>Sun Dried Tomatoes</li>
+                                <li>Velveeta Cheese</li>
+                                <li>Red Sauce</li>
+                                <li>Whole Wheat Crust</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="pizza1" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
+                        <div style="width:35%">
+                            <img src="img/pizza.png" class="img-fluid">
+                        </div>
+                        <div style="width:65%">
+                            <h4>The Cameron Special</h4>
+                            <ul>
+                                <li>Chicken</li>
+                                <li>Hot Sauce</li>
+                                <li>White Crust</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <!--end container-fluid-->
+    <div class="row text-xs-center">
+        <footer class="col-xs-12">Thanks for visiting! &copy; 2014 - 2016 Udacity</footer>
+    </div>
+</div>
+
+<!--scripts placed and end of body for faster load times-->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/main.min.js"></script>
+
+
+
+</body>
+
+</html>

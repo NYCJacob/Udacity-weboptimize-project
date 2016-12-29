@@ -440,17 +440,6 @@ var resizePizzas = function (size) {
         for (var c = 0; c < pizzaContainers.length; c++) {
             pizzaContainers[c].style.width = sizeSwitcher(size) + "%";
         }
-
-        // change pie size text
-        var sizeDescriptor = document.getElementById("sizeDescriptor");
-        sizeDescriptor.innerHTML = "";
-        if (size === "1") {
-            sizeDescriptor.innerHTML = "Feeds one lonely person.";
-        } else if (size === "2") {
-            sizeDescriptor.innerHTML = "Feeds two romantic people";
-        } else {
-            sizeDescriptor.innerHTML = "Feeds 3-4 normal people or one drunk college student";
-        }
     }
 
     changePizzaSizes(size);

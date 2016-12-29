@@ -63,7 +63,7 @@ gulp.task('scripts', function() {
         //  .pipe(plugins.concat('scipts.js'))
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(plugins.uglify())
-        .pipe(gulp.dest('./dist/js'))
+        .pipe(gulp.dest('./dist/views/js'))
         .pipe(plugins.notify({ message: 'Scripts task complete' }));
 });
 
