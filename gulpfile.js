@@ -35,19 +35,12 @@ gulp.task('csslint', function () {
 });
 
 
-gulp.task('concatCss', function () {
-    return gulp.src('./build/views/css/*.min.css')
-        .pipe(plugins.concatCss('./build/views/css/bundled.min.css'))
-        .pipe(gulp.dest('.'));
-});
-
-
 gulp.task('styles', function() {
-    return gulp.src('./build/views/css/*.css' )
-        // .pipe(plugins.concatCss('./build/views/css/bundled.css'))
+    return gulp.src('build/views/css/*.css' )
+        .pipe(plugins.concatCss('bundled.css'))
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(plugins.cssnano())
-        .pipe(gulp.dest('./build/views/css/'))
+        .pipe(gulp.dest('dist/views/css'))
         .pipe(plugins.notify({ message: 'Styles task complete' }));
 });
 
@@ -60,10 +53,9 @@ gulp.task('jslint', function () {
 
 gulp.task('scripts', function() {
     return gulp.src(['./build/js/*.js', './build/views/js/main.js'])
-        //  .pipe(plugins.concat('scipts.js'))
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(plugins.uglify())
-        .pipe(gulp.dest('./dist/views/js'))
+        .pipe(gulp.dest('./dist/js'))
         .pipe(plugins.notify({ message: 'Scripts task complete' }));
 });
 
@@ -71,7 +63,7 @@ gulp.task('oneScript', function () {
     return gulp.src('./build/views/js/main.js')
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(plugins.uglify())
-        .pipe(gulp.dest('./build/views/js'))
+        .pipe(gulp.dest('./dist/views/js'))
         .pipe(plugins.notify({ message: 'oneScript task complete' }));
 });
 
@@ -79,7 +71,7 @@ gulp.task('oneScript', function () {
 // gulp-imagemin:   Minify PNG, JPEG, GIF and SVG images
 
 gulp.task('images', function() {
-    return gulp.src(['./build/img/*', './build/views/img/*',  '!./views/img/pizzeria.jpg' ], {base: 'build'})
+    return gulp.src(['./build/img/*', './build/views/images/*.+(jpg|png)',  '!./views/img/pizzeria.jpg' ], {base: 'build'})
         .pipe(plugins.imagemin({
             use:[imageminJpegRecompress({
                 loops:6,
