@@ -444,14 +444,6 @@ var resizePizzas = function(size) {
           resizeContainers[i].style.width = sizeSwitcher(size) + "%";
         }
     }
-  // Iterates through pizza elements on the page and changes their widths
-  function _changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
-    }
-  }
 
   changePizzaSizes(size);
 
@@ -470,8 +462,9 @@ var randColumns = Math.floor(window.innerWidth / 87.48);
 var randRow = Math.floor(window.innerHeight) / 113.13;
 var randPizzaCount = Math.floor(randColumns * randRow);
 
+// moved var assignment outside of loop
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < randPizzaCount; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -517,9 +510,10 @@ function updatePositions() {
 
     for (var i = 0; i < items.length; i++) {
         var phase = phaseArray[i % 5];
-        var startLeft = items[i].style.left;
-        var startX = parseInt(startLeft.slice(0, -2));
-        items[i].style.transform = "translateX(" + (startX + phase) + "px)";
+        // var startLeft = items[i].style.left;
+        // var startX = parseInt(startLeft.slice(0, -2));
+        // items[i].style.transform = "translateX(" + (startX + phase) + "px)";
+        items[i].style.transform = 'translateX(' + phase + 'px)';
     }
 
     // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -543,9 +537,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // math.floor used to err on more pizzas because sin function swings both ways
     // meaning a pizza could come in from offscreen
     // width and height of image subtracted to account for image space
-    var realColumns = Math.floor(window.innerWidth / (s - 73.33));
+    // var realColumns = Math.floor(window.innerWidth / (s - 73.33));
     var realRow = Math.floor(window.innerHeight) / (s - 100);
-    var pizzaCount = realColumns * realRow;
+    var pizzaCount = cols * realRow;
 
     for (var i = 0; i < pizzaCount; i++) {
         var elem = document.createElement("img");
@@ -555,9 +549,9 @@ document.addEventListener("DOMContentLoaded", function () {
         elem.style.width = "73.333px";
         // basicLeft is just 8 multiples of 256
         // elem.basicLeft = (i % cols) * s;
-        elem.style.left = (i % realColumns) * s + "px";
+        elem.style.left = (i % cols) * s + "px";
         elem.style.top = (Math.floor(i / cols) * s) + "px";
-        elem.style.willChange = "tranform";
+        elem.style.willChange = "transform";
         document.querySelector("#movingPizzas1").appendChild(elem);
 
     }
